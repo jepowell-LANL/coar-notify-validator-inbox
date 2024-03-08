@@ -6,13 +6,14 @@ This is a tool for validating AS2/COAR-Notify messages that might be exchanged b
 
 Install and Run
 -----------
-
+<code>
 pip install kglab flask
 
 next, edit config.ini if needed.
 
 to run
 python validator-inbox.app.py config.ini
+</code>
 
 Functional Description
 -----------
@@ -20,7 +21,7 @@ The Linked Data Notification protocol was designed to enable the exchange of Lin
 
 The COAR-Notify inbox service is designed so that it can receive any messages that target it as a recepient provided they reference the COAR-Notify namespace and are AS2 compliant RDF messages that are serialized using one of the serializations supported by the service. Unrecognized serialization, and messages lacking an indication that they at least “may” contain COAR-Notify content are rejected. Since the purpose of the service is to validate these messages, a message merely has to be a well-formed serialization of its self-identified type, that is, a malformed ref-xml or json-ld message will be rejected, but a message that is well-formed xml or JSON-LD but may not be fully compliant with any COAR-Notify message formats will be accepted. It would be possible to generate and return a message containing a shape validation report but this would require that the consumer automatically determine the intended message type, which is beyond the scope of this service. Users should access the web interface of the COAR-Notify inbox in order to trigger a validation request, and review the results of validation. 
 
-(examples/figures/app-flow.png)
+![app flow](examples/figures/app-flow.png)
 
 An AS2-COAR Notify message is composed 
 The message includes an intended recipient
@@ -54,7 +55,8 @@ The steps of a validation are as follows:
 7) the user is presented with the RDF triples as well as a visualization of the validation report
 8) the user is presented with the RDF triples and visualization of the original message
 
-(examples/figures/valid-1.png)
+![message graph](examples/figures/valid-1.png)
+
 Please contact James Powell, jepowell@lanl.gov with any questions.
 
 License
