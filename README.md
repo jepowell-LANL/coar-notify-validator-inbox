@@ -57,7 +57,8 @@ The steps of a validation are as follows:
 
 ![message graph](examples/figures/valid-1.png)
 
-Please contact James Powell, jepowell@lanl.gov with any questions.
+![message graph](examples/figures/valid-3.png)
+
 
 License
 -------
