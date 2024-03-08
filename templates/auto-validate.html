@@ -1,0 +1,16 @@
+<html><head><title>COAR Notify AS2 Validator</title></head><body>'
+<h2>Validation report:</h2>'
+<table>'
+<tr><td>You submitted message </td><th>' + message_id + '</th></tr>'
+<tr><td>which was validated against SHACL for </td><th>' + shape_label + '</th></tr>'
+</table>'
+<pre>'
+report_text = report_text.replace('"','')
+report_text = report_text.replace('>','')
+report_text
+</pre>'
+graph_viz_link = '<embed type="text/html" src="/' + str(visualize_graph(report_graph)) + '" width="600" height="700" >'
+<b>Validation Report</b><br>' + graph_viz_link
+graph_viz_link = '<embed type="text/html" src="/' + str(visualize_graph(payload_data, serialization='json-ld')) + '" width="600" height="700" >'
+graph_viz_link
+</body></html>'

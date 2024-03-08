@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"/>
+   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"/>
+
+   <style> 
+   table.list { width: auto; margin: auto; text-align: left} 
+   table { width: 1200px; margin: 10px; background: #ffffff; } 
+   table.fixedlist { width: 1200px; margin: 10px; background: #ffffff; text-align: center } thead.list { background: 8d8741; } 
+   h2.top { text-align: center; color: #003333 }
+   h1.top { text-align: center; color: #003333 }  
+   h2.completed { color: #daad86; } 
+   h2.waiting {color: #bc986a; } 
+   th {top: 0; position: sticky; background: white }
+   th.default { text-align: center; color: 8d8741 } 
+   th.completed { color: #daad86; } th.submit { text-align: right} th.list { text-align: left} th.heading { color: #daad86; text-align:center } th.bib { background: #efefef; color: #daad86; text-align: left} td { padding: 2px 2px 6px 6px; text-align: left } td.bib { background: #cdcdcd; color: #daad86; text-align: left} 
+   body { background-color: #efefef; font-family: arial; color: #003333} text-align: center; td { font-size: 15px;} </style>
+  </head>
+
+  <body>
+    <h1 class="top">COAR Notify Validator Inbox</h1>
+    <div class="inbox">
+    <table class="fixedlist">
+      <tr><th class=".email">&nbsp;</th><th>Sender</th><th>Subject</th><th class="default">Recipient</th><th class="default">Timestamp</th></tr>
+      <tr><td colspan="5"><hr></td></tr>
+        {%for id in inbox_contents: %}
+	<tr><td><a href="/validate?message_id={{id}}&shape_filename={{inbox_contents[id]['shape_filename']}} "><img alt="Validate" title="Validate" src="/static/images/magnify-validate.png"></a></td><td><a href="/message?id={{id}}&shape_filename={{inbox_contents[id]['shape_filename']}}" title="View Message Source">{{inbox_contents[id]['origin']}}<br> ({{inbox_contents[id]['hosturl']}})</a></td><td>{{inbox_contents[id]['contenttype']}}</td><td>{{inbox_contents[id]['recipient']}}</td><td>{{inbox_contents[id]['timestamp']}}</td></tr>
+        <tr><td colspan="5"><hr></td></tr>
+            {% endfor %}
+    </table>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

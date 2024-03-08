@@ -1,0 +1,16 @@
+<html lang="en">
+  <head>
+    <title>LDN Message ID {{message_id}}</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{url_for('.static', filename='css/pyldn.css')}}" rel="stylesheet">
+  </head>
+
+  <body>
+          <div class="inbox">
+            Message Id: {{message_id}} <br>
+            <a href="/validate?message_id={{ message_id }}&shape_filename={{shape_filename}} ">Validate Message {{message_id}}</a>
+            <pre>{{inbox_contents[message_id]}}</pre>
+          </div>
+
+  </body>
+</html>

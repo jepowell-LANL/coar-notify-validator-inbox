@@ -1,0 +1,77 @@
+@prefix ex: <http://example.org#>.
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix as: <https://www.w3.org/ns/activitystreams#> .
+@prefix ietf: <http://www.iana.org/assignments/relation/>.
+@prefix coar-notify: <https://purl.org/coar/notify_vocabulary/>.
+@prefix sorg: <http://schema.org/>.
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:ValidationShape 
+rdfs:label "Test Announce-Endorsement AS2 COAR-Notify Shape".
+
+ex:ActivityStreamsAction
+rdfs:label "https://www.w3.org/ns/activitystreams#Announce".
+
+ex:COARAction
+rdfs:label "https://purl.org/coar/notify_vocabulary/EndorsementAction".
+
+ex:AnnounceShape
+    a sh:NodeShape  ;
+    sh:targetNode as:Announce ;
+    sh:property [
+        sh:path [ sh:inversePath rdf:type ] ;
+        sh:minCount 1;
+    ].
+ex:EndorseShape
+    a sh:NodeShape  ;
+    sh:targetNode coar-notify:EndorsementAction ;
+    sh:property [
+        sh:path [ sh:inversePath rdf:type ] ;
+        sh:minCount 1;
+    ];
+    sh:property[
+        sh:path as:actor;
+        sh:nodeKind as:IRI;
+        sh:class as:Service;
+        sh:property [
+          sh:path as:name;
+          sh:datatype xsd:string;
+          sh:minCount 1;
+        ];
+
+    ];
+    sh:property[
+        sh:path as:target;
+        sh:nodeKind as:IRI;
+        sh:class as:Service;
+        sh:property[
+          sh:path ldp:inbox;
+          sh:nodeKind sh:IRI;
+          sh:minCount 1;
+        ];
+    ];
+    sh:property[
+        sh:path as:object;
+        sh:nodeKind as:IRI;
+        sh:class as:Page;
+        sh:property[
+          sh:path ietf:cite-as;
+          sh:nodeKind sh:IRI;
+          sh:minCount 1;
+        ];
+    ];
+
+    sh:property[
+        sh:path as:origin;
+        sh:nodeKind as:IRI;
+        sh:class as:Service;
+        sh:property[
+          sh:path ldp:inbox;
+          sh:nodeKind sh:IRI;
+          sh:minCount 1;
+        ];
+    ].
+

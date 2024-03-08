@@ -1,0 +1,76 @@
+@prefix ex: <http://example.org#>.
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix as: <https://www.w3.org/ns/activitystreams#> .
+@prefix ietf: <http://www.iana.org/assignments/relation/>.
+@prefix coar-notify: <https://purl.org/coar/notify_vocabulary/>.
+@prefix sorg: <http://schema.org/>.
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:ValidationShape
+rdfs:label "Announce-Review AS2 COAR-Notify Shape".
+
+ex:ActivityStreamsAction
+rdfs:label "https://www.w3.org/ns/activitystreams#Announce".
+
+ex:COARAction
+rdfs:label "https://purl.org/coar/notify_vocabulary/ReviewAction".
+
+
+ex:OfferShape
+    a sh:NodeShape  ;
+    sh:targetNode as:Announce ;
+    sh:property [
+        sh:path [ sh:inversePath rdf:type ] ;
+        sh:minCount 1;
+    ].
+ex:ReviewShape
+    a sh:NodeShape  ;
+    sh:targetNode coar-notify:ReviewAction ;
+    sh:property [
+        sh:path [ sh:inversePath rdf:type ] ;
+        sh:minCount 1;
+    ].
+ex:ReviewObjectShape
+    a sh:NodeShape ;
+    sh:targetNode as:Document;
+    sh:property [
+        sh:path [ sh:inversePath rdf:type ] ;
+        sh:minCount 1;
+    ].
+ex:SorgReviewObjectShape
+    a sh:NodeShape ; 
+    sh:targetNode sorg:Review;
+    sh:property [
+        sh:path [ sh:inversePath rdf:type ] ;
+        sh:minCount 1;
+    ].
+
+    
+
+ex:OriginShape
+    a sh:NodeShape;
+    sh:targetObjectsOf as:origin ;
+    sh:property [
+      sh:path rdf:type;
+      sh:hasValue as:Service;
+      sh:message 'Origin must be of type AS2 Service'
+    ];
+    sh:property ex:InboxShape.
+
+ex:TargetShape
+    a sh:NodeShape;
+    sh:targetObjectsOf as:target ;
+    sh:property [
+      sh:path rdf:type;
+      sh:hasValue as:Service;
+      sh:message 'Target must be of type AS2 Service'
+    ];
+    sh:property ex:InboxShape.
+
+ex:InboxShape sh:path ldp:inbox;
+      sh:nodeKind sh:IRI;
+      sh:minCount 1;
+      sh:maxCount 1.
+

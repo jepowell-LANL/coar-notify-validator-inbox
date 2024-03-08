@@ -1,0 +1,46 @@
+@prefix coar: <https://purl.org/coar/> .
+@prefix as: <https://www.w3.org/ns/activitystreams#> .
+@prefix sorg: <https://research-organisation.org/vocab#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ex: <http://example.org/shapes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+
+ex:ValidationShape
+rdfs:label "Review Action 2.1 AS2 COAR-Notify Shape".
+
+ex:ActivityStreamsAction
+rdfs:label "https://www.w3.org/ns/activitystreams#Offer".
+
+ex:COARAction
+rdfs:label "https://purl.org/coar/notify_vocabulary/ReviewAction".
+
+
+# Define the target shapes graph
+ex:targetShapesGraph a sh:NodeShape ;
+    sh:targetClass as:Announce ;
+    sh:property [        sh:path as:actor ;        sh:node ex:actorNodeShape ;        sh:minCount 1 ;        sh:message "The Announce object must have an actor." ;    ] ;
+    sh:property [        sh:path as:object ;        sh:node ex:objectNodeShape ;        sh:minCount 1 ;        sh:message "The Announce object must have an object." ;    ] ;
+    sh:property [        sh:path as:origin ;        sh:node ex:originNodeShape ;        sh:minCount 1 ;        sh:message "The Announce object must have an origin." ;    ] ;
+    sh:property [        sh:path as:target ;        sh:node ex:targetNodeShape ;        sh:minCount 1 ;        sh:message "The Announce object must have a target." ;    ] ;
+    sh:property [        sh:path coar:notify ;        sh:node ex:coarNotifyNodeShape ;        sh:minCount 1 ;        sh:message "The Announce object must include a COAR notification." ;    ] .
+
+# Define the actor node shape
+ex:actorNodeShape a sh:NodeShape ;
+    sh:targetClass as:Service ;
+    sh:property [        sh:path as:id ;        sh:datatype xsd:string ;        sh:minCount 1 ;        sh:message "The actor must have an ID." ;    ] ;
+    sh:property [        sh:path as:name ;        sh:datatype xsd:string ;        sh:minCount 1 ;        sh:message "The actor must have a name." ;    ] ;
+    sh:property [        sh:path as:type ;        sh:in (as:Service) ;        sh:minCount 1 ;        sh:message "The actor must have a type of 'Service'." ;    ] .
+
+# Define the object node shape
+ex:objectNodeShape a sh:NodeShape ;
+    sh:targetClass as:Article ;
+    sh:property [        sh:path as:id ;        sh:datatype xsd:string ;        sh:minCount 1 ;        sh:message "The object must have an ID." ;    ] ;
+	sh:property [        sh:path coar:media-type ;        sh:datatype xsd:anyURI ;        sh:minCount 1 ;        sh:message "The object must have a citation." ;    ] ;
+    sh:property [        sh:path rdf:type ;        sh:in (sorg:ScholarlyArticle) ;        sh:minCount 1 ;        sh:message "The object must have a type of 'sorg:Review'." ;    ] .
+
+# Define the origin node shape
+ex:originNodeShape a sh:NodeShape ;
+    sh:targetClass as:Offer ;
+    sh:property [        sh:path as:id ;        sh:datatype xsd:string ;        sh:minCount 1 ;        sh:message "The origin node must have an id and be of type as:Service.";].
