@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 # config.py: An object to manage pyldn's config
+# adapted from:
+#   https://github.com/albertmeronyo/pyldn
 
 from configparser import SafeConfigParser
 import logging

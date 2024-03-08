@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 # pyldn: A python Linked Data Notifications (LDN) receiver
+# adapted from:
+#   https://github.com/albertmeronyo/pyldn
 
 from flask import Flask, request, render_template, make_response
 import logging
