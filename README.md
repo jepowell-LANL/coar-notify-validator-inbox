@@ -9,7 +9,7 @@ More comprehensive documentation forthcoming. Please contact James Powell, jepow
 License
 -------
 
-This software is distributed under a BSD  license with a "modifications must be indicated" clause. See [the LICENSE file](https://github.com/jepowell-LANL/coar-notify-validator-inbox/license.md) for the full text.
+This software is distributed under a BSD  license with a "modifications must be indicated" clause. See [the LICENSE file](https://github.com/jepowell-LANL/coar-notify-validator-inbox/blob/d2ec1733d2dc12f60a17aa23db76047fb227b1d7/license.md) for the full text.
 
 Author
 ------
