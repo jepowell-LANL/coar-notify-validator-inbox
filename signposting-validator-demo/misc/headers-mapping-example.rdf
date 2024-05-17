@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:ex="http://example.org/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sp="http://signposting.org/"
+>
+  <ex:AggregateDocument rdf:about="https://doi.pangea.de/10.1594/PANGEA.867908">
+    <sp:cite-as rdf:resource="https://doi.org/10.1594/PANGAEA.867908"/>
+    <sp:author rdf:resource="https://orcid.org/0000-0001-8877-1325"/>
+    <sp:author rdf:resource="https://orcid.org/0000-0002-0856-5183"/>
+    <sp:author rdf:resource="https://orcid.org/0000-0003-2612-8347"/>
+    <sp:author rdf:resource="https://orcid.org/0000-0003-1291-8524"/>
+    <sp:author rdf:resource="https://orcid.org/0000-0002-7527-5880"/>
+    <sp:describedby rdf:resource="https://doi.pangaea.de/10.1594/PANGAEA.867908?format=citation_text"/>
+    <sp:describedby rdf:resource="https://doi.pangaea.de/10.1594/PANGAEA.867908?format=metadata_datacite4"/>
+    <sp:describedby rdf:resource="https://doi.pangaea.de/10.1594/PANGAEA.867908?format=metadata_panmd"/>
+    <sp:describedby rdf:resource="https://doi.pangaea.de/10.1594/PANGAEA.867908?format=metadata_dif"/>
+    <sp:describedby rdf:resource="https://doi.pangaea.de/10.1594/PANGAEA.867908?format=citation_ris"/>
+    <sp:describedby rdf:resource="https://doi.pangaea.de/10.1594/PANGAEA.867908?format=citation_bibtex"/>
+    <sp:describedby rdf:resource="https://doi.pangaea.de/10.1594/PANGAEA.867908?format=metadata_jsonld"/>
+    <sp:describedby rdf:resource="https://doi.pangaea.de/10.1594/PANGAEA.867908?format=metadata_iso19139"/>
+    <sp:item rdf:resource="https://doi.pangaea.de/10.1594/PANGAEA.867908?format=zip"/>
+  </ex:AggregateDocument>
+</rdf:RDF>
