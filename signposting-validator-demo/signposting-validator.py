@@ -23,6 +23,10 @@ import signposting
 import uuid 
 from pyshacl import validate
 
+# usage:
+#   python signposting-validator.py
+#   access http://localhost:8078/
+
 shapefiledir = './fair-signposting-shapes/'
 patterns = {'author': ['author'], 'bibliographic metadata': ['describes', 'describedby'], 'identifier': ['cite-as'], 'publication boundary': ['item', 'collection'], 'resource type': ['type'], 'license': ['license']}
 
