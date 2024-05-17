@@ -1,0 +1,27 @@
+<html>
+<head><title>Validate resources against signposting specification</title>
+</head>
+<body>
+<h2>Validate signposting data returned for a URI </h2>
+<form method="get" action="/validate-recipe">
+<table border="0">
+<tr><th>Enter a URL:</th><td> <input type="text" name="start_url" size=73></td></tr>
+<tr><th>Select resource type:</th><td><select name="resource">
+<option value="landing-page">Landing page</option>
+<option value="content-resource">Content resource</option>
+<option value="metadata-resource">Metadata resource</option>
+</select>
+</td></tr>
+<tr><th>Select retrieval method:</th><td><select name="retrieval">
+<option value="link-headers">Link headers</option>
+<option value="html-elements">HTML elements</option>
+<option value="linkset">Linkset</option>
+</select>
+</td></tr>
+<tr><td colspan="2" align="right"><input type="submit" name="Submit"></td></tr>
+</table>
+<p>
+</form>
+</body>
+</html>
+

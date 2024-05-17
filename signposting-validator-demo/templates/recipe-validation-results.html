@@ -1,0 +1,21 @@
+<html>
+<head><title>Link headers for {{url}}</title></head>
+<body>
+  <h2>Link headers list for recipe {{recipe_type}}</h2>
+  <i>{{url}}</i>
+  <br>
+  <ul>
+        {%for index in patterns_matched.keys(): %}
+          <li>{{index}} {{patterns_matched[index]}}
+        {% endfor %}
+  </ul>
+  <h2>RDF mapping</h2>
+  <code>
+    {{rdf}}
+  </code>
+
+  <h2>SHACL validation report</h2>
+  {{report}}
+  
+</body>
+</html>

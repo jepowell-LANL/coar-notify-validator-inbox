@@ -1,0 +1,14 @@
+<html>
+<head><title>Link headers for {{url}}</title></head>
+<body>
+  <h2>Link headers list</h2>
+  <i>{{url}}</i>
+  <br>
+  <ul>
+        {%for index in results: %}
+          <li>{{index}} with value {{results[index]}}
+        {% endfor %}
+  </ul>
+  <a href={{graph_link}}>View as graph</a>
+</body>
+</html>

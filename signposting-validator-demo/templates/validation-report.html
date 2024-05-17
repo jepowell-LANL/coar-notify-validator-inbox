@@ -1,0 +1,14 @@
+<html>
+<head><title>Signposting Validator</title></head>
+<body>
+  <h2>Validation report:</h2>
+  <table>
+    <tr><td>You submitted URL </td><th>{{filename}}</th></tr>
+    <tr><td>which was validated against SHACL for </td><th>{{shape_label}}</th></tr>
+  </table>
+  <pre>{{report_text}}</pre>
+      <b>Validation Report</b><br>
+      <embed type="text/html" src="{{validation_viz_link}}" width="600" height="700" >
+      <embed type="text/html" src="{{message_viz_link}}" width="600" height="700" >
+</body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+<head><title>Link headers for {{url}}</title></head>
+<body>
+  <h2>Link headers list</h2>
+  <i>{{url}}</i>
+  <br>
+  <ul>
+        {%for index in results: %}
+          <li>{{index}}
+        {% endfor %}
+  </ul>
+  Status: <b>{{status}}</b> for pattern <b>{{pattern}}</b>
+  <p>
+  <h2>SHACL validation results</h2>
+  <h3>Shapefile used</h3>
+  {{shapefilename}}
+  <h3>Shape validation results</h3>
+  {{shacl_results}}
+  <p>
+  <a href={{graph_link}}>View link headers associated with this resource as a graph</a>
+</body>
+</html>

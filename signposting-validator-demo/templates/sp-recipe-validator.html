@@ -1,0 +1,23 @@
+<html>
+<head><title>Validate a FAIR/Signposting recipe</title>
+</head>
+<body>
+<h2>Validate Link headers returned from a URI against a FAIR/Signposting recipe or pattern</h2>
+
+<form method="get" action="/validate-recipe">
+<table border="0">
+<tr><th>Enter a URL:</th><td> <input type="text" name="start_url" size=73></td></tr>
+<tr><th>Select the recipe validate:</th><td> <select name="recipe_name">
+  {%for entry in shapefiles: %}
+     <option value="{{entry}}">{{entry}}</option>
+  {% endfor %}
+</select>
+</td></tr>
+<tr><td colspan="2" align="right"><input type="submit" name="Submit"></td></tr>
+</table>
+<p>
+See <a href="https://signposting.org/FAIR/#examples1">for FAIR/Signposting recipes and examples</a>
+<br>
+</form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix ex: <http://example.org/> .
+
+ex:ValidationShape
+rdfs:label "FAIR Signposting Level 1: typed links pertaining to landing page".
+
+<#ValidationShapes>
+  a sh:NodeShape ;
+  sh:targetClass ex:AggregateDocument ;  # Targeting the aggregate document
+
+  # Constraint for having at least one schema:author
+  sh:property [
+    sh:path dcterms:creator ;
+    sh:minCount 0 ;
+    sh:message "The document must have at 0 or more authors." ;
+  ] ;
+
+  # Constraint for having at least one schema:license
+  sh:property [
+    sh:path schema:license ;
+    sh:minCount 0 ;
+    sh:message "The document must have 0 or 1 licenses." ;
+  ] ;
+
+  # Constraint for having at least one part
+  sh:property [
+    sh:path dcterms:hasPart ;
+    sh:minCount 0 ;
+    sh:nodeKind sh:IRI ;
+    sh:message "The document must contain 0 or more items." ;
+  ];
+
+  sh:property [
+    sh:path dcterms:description ;
+    sh:minCount 1 ;
+    sh:message "The document must reference one or more metadata descriptions.";
+  ];
+
+  sh:property [
+    sh:path dcterms:references ; 
+    sh:minCount 1 ;
+    sh:message "The document must reference a landing page URI.";
+  ] .
+
