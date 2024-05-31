@@ -13,7 +13,7 @@ import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
  
-# from link_header import *
+from link_header import *
 
 import rdflib
 from rdflib import URIRef, Literal, Namespace
