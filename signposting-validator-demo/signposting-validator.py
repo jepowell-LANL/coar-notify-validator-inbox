@@ -306,7 +306,8 @@ def validate_recipe():
 
   site_signposts = get_signposts(start_url)
   all_headers = start_url_metadata.headers
-  all_headers, all_link_headers, response = get_http_headers(start_url)
+  if retrieval=='link-headers':
+    all_headers, all_link_headers, response = get_http_headers(start_url)
   graph_page = transform_link_headers(site_signposts, start_url, retrieval)
 
   results_text, status = shacl_validate(graph_page, shapeFiles[shapefilename])
