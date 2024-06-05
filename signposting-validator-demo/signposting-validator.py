@@ -52,8 +52,16 @@ def saveResults(resultsString, resultsFilename):
     results.write(resultsString)
   results.close()
 
-def get_signposts(url):
-  s = signposting.find_signposting_http(url)
+def get_signposts(url, retrieval):
+  print('---> ' + str(url))
+  if retrieval =='linkset':
+    # s = signposting.find_signposting_linkset(url, acceptType='application/linkset+json')
+    # s = signposting.find_signposting_linkset(url, 'application/linkset+json')
+    s = signposting.find_signposting_linkset(url, acceptType='application/linkset+json')
+  if retrieval =='link-headers':
+    s = signposting.find_signposting_http(url)
+  if retrieval =='html-elements':
+    s = signposting.find_signposting_html(url)
   print(s)
   print('entries in signposting class')
   for entry in s:
@@ -304,10 +312,22 @@ def validate_recipe():
   start_url_metadata = requests.get(start_url)
   # print(start_url_metadata.content)
 
-  site_signposts = get_signposts(start_url)
   all_headers = start_url_metadata.headers
+
   if retrieval=='link-headers':
     all_headers, all_link_headers, response = get_http_headers(start_url)
+    site_signposts = get_signposts(start_url, retrieval)
+
+  if retrieval=='linkset':
+    all_headers, all_link_headers, response = get_http_headers(start_url)
+    print(all_link_headers)
+    # 'link': '<https://zenodo.org/api/records/8030018> ; rel="linkset" ; type="application/linkset+json"'
+    # [{'link': '<https://zenodo.org/api/records/8030018> ; rel="linkset" ; type="application/linkset+json"'}]
+    # ---> <https://zenodo.org/api/records/8030018> ; rel="linkset" ; type="application/linkset+json"
+    linkset_url = all_link_headers[0]['link'].split(';')[0].replace('>','').replace('<','').strip()
+    site_signposts = get_signposts(linkset_url, retrieval)
+    # site_signposts = get_signposts(start_url, retrieval)
+
   graph_page = transform_link_headers(site_signposts, start_url, retrieval)
 
   results_text, status = shacl_validate(graph_page, shapeFiles[shapefilename])
@@ -330,7 +350,7 @@ def get_link_headers():
   start_url_metadata = requests.get(start_url)
   # print(start_url_metadata.content)
  
-  site_signposts = get_signposts(start_url)
+  site_signposts = get_signposts(start_url, retrieval)
   all_headers = start_url_metadata.headers
   all_link_headers, graph_page, status = validate_link_headers(start_url, pattern_name)
   all_headers, all_link_headers, response = get_http_headers(start_url)
